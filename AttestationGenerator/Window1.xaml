@@ -1,0 +1,28 @@
+﻿<Window x:Class="AttestationGenerator.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AttestationGenerator"
+        mc:Ignorable="d"
+        Title="À propos" Height="220" Width="480" ResizeMode="NoResize" SizeToContent="Height">
+    <Grid Margin="0,0,-22,6">
+        <Label Content="Cet outil a été développer par Julien HERR" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="LinkedIn : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBlock Margin="79,46,0,0">           
+            <Hyperlink NavigateUri="http://www.linkedin.com/in/herrjulien/" RequestNavigate="linkedIn_navigate">
+                /in/herrjulien/
+            </Hyperlink>
+        </TextBlock>
+        <Label Content="Site : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <TextBlock Margin="54,77,0,0"><Hyperlink NavigateUri="http://www.julienherr.fr" RequestNavigate="website_Navigate"><Run Text="www.julienherr.fr"/></Hyperlink></TextBlock>
+        <Label Content="Cette outil est sous licence AGPL" HorizontalAlignment="Left" Margin="11,103,0,0" VerticalAlignment="Top"/>
+        <Label Content="Code source : " HorizontalAlignment="Left" Margin="11,134,0,0" VerticalAlignment="Top"/>
+        <TextBlock Margin="101,139,0,0"><Hyperlink NavigateUri="https://github.com/Doutsy" RequestNavigate="GitHub_Navigate"><Run Text="GitHub"/></Hyperlink></TextBlock>
+        <Label Content="Librairies utilisées :" HorizontalAlignment="Left" Margin="189,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="iText 7" HorizontalAlignment="Left" Margin="303,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="QRCoder" HorizontalAlignment="Left" Margin="303,67,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>
