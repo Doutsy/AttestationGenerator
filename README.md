@@ -11,6 +11,9 @@ Cet outil est un travail d'étudiant principalement pour apprendre le Framework 
 
 2 choix possibles : l'installer sur votre pc ou bien la version standalone qui n'a pas besoin d'être installée
 
+## Utilisation
+Lancez AttestationGenerator.exe
+
 ## Documentation
 
 ![](.gitbook/assets/attestationGenerator_main.PNG)
