@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttestationGenerator"
         mc:Ignorable="d"
-        Title="Générateur d'attestation" Height="690" Width="800" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize" SizeToContent="Height" WindowStartupLocation="CenterScreen">
+        Title="Générateur d'attestation" Height="690" Width="800" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize" SizeToContent="Height" WindowStartupLocation="CenterScreen" Icon="Icon2.ico">
 
     <Grid>
         <Menu IsMainMenu="True" Background="#FFCFCFCF" Margin="0,0,0,643">
@@ -65,6 +65,9 @@
         </Border>
         <Label Content="Signature" HorizontalAlignment="Left" Margin="54,353,0,0" VerticalAlignment="Top"/>
         <Button Content="Réinitialiser signature" HorizontalAlignment="Left" Margin="54,493,0,0" VerticalAlignment="Top" Width="230" Click="Button_Click_1"/>
+        <CheckBox x:Name="mobileCheckbox" HorizontalAlignment="Left" Margin="56,595,0,0" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" Text="Coché = utilisation sur mobile&#10;Pas coché = Attestation imprimée" Height="34" Width="235" />
+        </CheckBox>
 
     </Grid>
 </Window>

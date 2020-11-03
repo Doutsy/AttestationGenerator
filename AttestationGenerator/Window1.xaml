@@ -18,7 +18,7 @@
         <TextBlock Margin="54,77,0,0"><Hyperlink NavigateUri="http://www.julienherr.fr" RequestNavigate="website_Navigate"><Run Text="www.julienherr.fr"/></Hyperlink></TextBlock>
         <Label Content="Cette outil est sous licence AGPL" HorizontalAlignment="Left" Margin="11,103,0,0" VerticalAlignment="Top"/>
         <Label Content="Code source : " HorizontalAlignment="Left" Margin="11,134,0,0" VerticalAlignment="Top"/>
-        <TextBlock Margin="101,139,0,0"><Hyperlink NavigateUri="https://github.com/Doutsy" RequestNavigate="GitHub_Navigate"><Run Text="GitHub"/></Hyperlink></TextBlock>
+        <TextBlock Margin="101,139,0,0"><Hyperlink NavigateUri="https://github.com/Doutsy/AttestationGenerator/" RequestNavigate="GitHub_Navigate"><Run Text="GitHub"/></Hyperlink></TextBlock>
         <Label Content="Librairies utilisées :" HorizontalAlignment="Left" Margin="189,41,0,0" VerticalAlignment="Top"/>
         <Label Content="iText 7" HorizontalAlignment="Left" Margin="303,41,0,0" VerticalAlignment="Top"/>
         <Label Content="QRCoder" HorizontalAlignment="Left" Margin="303,67,0,0" VerticalAlignment="Top"/>

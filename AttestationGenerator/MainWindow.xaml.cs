@@ -45,7 +45,7 @@ namespace AttestationGenerator
 
         private static Regex _dateRegex = new Regex(@"^(0[1-9]|[12]\d|3[01])[\/](0[1-9]|1[012])[\/](\d{4})$");
         private static Regex _birthdayRegex = new Regex(@"([0][1-9]|[1-2][0-9]|30|31)\/([0][1-9]|10|11|12)\/(19[0-9][0-9]|20[0-1][0-9]|2020)");
-        private static Regex _hourRegex = new Regex(@"^(0[0-1]?[0-9]|2[0-3]):[0-5][0-9]$");
+        private static Regex _hourRegex = new Regex(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
         private static Regex _postalRegex = new Regex(@"(\d){5}");
 
         private float[] reasonsHeight = { 572, 527, 471, 429, 390, 352, 289, 249, 205 };
@@ -72,22 +72,22 @@ namespace AttestationGenerator
         {
             if (!IsBirthDayCorrect(birthDateTextBox.Text))
             {
-                MessageBox.Show("Date de naissance non valide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Date de naissance non valide.\nFormat : JJ/MM/AAAA", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (!IsDateCorrect(dateTextBox.Text))
             {
-                MessageBox.Show("Date de sortie non valide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Date de sortie non valide.\nFormat : JJ/MM/AAAA", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (!IsHourCorrect(timeTextBox.Text))
             {
-                MessageBox.Show("Heure de sortie non valide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Heure de sortie non valide.\nFormat : HH:MM", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (!IsPostalCorrect(postalTextBox.Text))
             {
-                MessageBox.Show("Code postal non valide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Code postal non valide.\nFormat : 01234", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -110,8 +110,19 @@ namespace AttestationGenerator
             #endregion
 
             string appPath = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "PDF file | *.pdf";
+            string savePath;
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                savePath = saveFileDialog1.FileName;
+            }
+            else
+            {
+                return;
+            }
 
-            PdfDocument attestationPdf = new PdfDocument(new PdfReader(appPath + "/certificate.pdf"), new PdfWriter(new FileStream(appPath + "/attestation_" + DateTime.Now.ToString().Replace("/", "_").Split(' ')[0] + ".pdf", FileMode.Create, FileAccess.Write)));
+            PdfDocument attestationPdf = new PdfDocument(new PdfReader(appPath + "/certificate.pdf"), new PdfWriter(new FileStream(savePath, FileMode.Create, FileAccess.Write)));
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
             string fullName = firstName + " " + lastName;
@@ -166,14 +177,16 @@ namespace AttestationGenerator
             signatureImg.SetWidth(100);
             document.Add(signatureImg);
 
-            document.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
+            if (mobileCheckbox.IsChecked == true)
+            {
+                document.Add(new AreaBreak(AreaBreakType.NEXT_PAGE));
 
-            var largeImg = pdfImg;
-            largeImg.SetHeight(300);
-            largeImg.SetWidth(300);
-            largeImg.SetFixedPosition(50f, document.GetPdfDocument().GetDefaultPageSize().GetHeight() - 344);
-            document.Add(largeImg);
-
+                var largeImg = pdfImg;
+                largeImg.SetHeight(300);
+                largeImg.SetWidth(300);
+                largeImg.SetFixedPosition(50f, document.GetPdfDocument().GetDefaultPageSize().GetHeight() - 344);
+                document.Add(largeImg);
+            }
             document.Close();
 
             MessageBox.Show("Attestation générée !", "Réussite", MessageBoxButton.OK);
